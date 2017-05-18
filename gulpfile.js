@@ -22,7 +22,7 @@ gulp.task('serve', ['less'], function() {
 gulp.task('less', function () {
   return gulp.src('./less/style.less')
     .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ],
+      //paths: [ path.join(__dirname, 'less', 'includes') ],
       plugins: [autoprefix]
     }))
     .on('error', handleError)

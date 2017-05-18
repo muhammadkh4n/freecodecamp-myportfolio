@@ -9,17 +9,17 @@ body {
 }
 
 div.page {
-  overflow: hidden;
-  height: auto;
-  position: relative;
+  height: @page-height;
 }
 
 aside#menu-bar {
-  height: 40000px;
+  // height: 40000px;
   position: fixed;
+  bottom: 0;
+  top: 0;
   padding-top: 50px;
   z-index: 998;
-  overflow:  hidden;
+  overflow: hidden;
   color: @gray-lighter;
 
   h1 {
@@ -133,7 +133,7 @@ div.main-content {
 div#welcome .jumbotron {
   padding: 0;
   margin: 0;
-  height: @page-height;
+  height: 100vh;
   background-image: linear-gradient(#00cf65, #25fca8);
 }
 
@@ -162,7 +162,10 @@ div#about {
 
   }
   #my-photo {
-    margin-top: -20px;
+
+    img {
+      border-radius: 50%;
+    }
   }
 }
 
@@ -170,15 +173,43 @@ div#portfolio {
   .project {
     margin-bottom: 30px;
   }
+
+  a {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+    &:hover .window {
+      box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.41);
+    }
+  }
+
+  a .window {
+    transition: 0.2s box-shadow ease;
+  }
+
   .window {
     border: 1px solid #bababa;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    max-height: 400px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
   }
   .window-panel {
     width: 100%;
     height: @win-panel-height;
     background-color: #bababa;
+    position: relative;
+
+    span.window-title {
+      position: absolute;
+      left: 70px;
+      top: -1px;
+    }
+
     i.x {
       display: inline-block;
       width: 10px;
@@ -316,6 +347,18 @@ footer#footer {
   }
 }
 
+@media (min-width: 1200px) and (max-width: 1323px) {
+  div#portfolio .window {
+    max-height: 300px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1173px) {
+  div#portfolio .window {
+    max-height: 300px;
+  }
+}
+
 @media (max-width: 1199px) {
   aside#menu-bar {
     width: 50px;
@@ -380,10 +423,6 @@ footer#footer {
 
   div.main-content {
     padding-left: 0;
-  }
-
-  div#welcome .jumbotron {
-    height: 600px;
   }
 
   div#about {

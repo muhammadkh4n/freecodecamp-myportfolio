@@ -3,7 +3,7 @@ $(document).ready(function() {
   var quote = $("#quote blockquote p");
 
   function fetchQuote() {
-    $.getJSON("http://quotes.stormconsultancy.co.uk/quotes.json")
+    $.getJSON("https://cors-anywhere.herokuapp.com/http://quotes.stormconsultancy.co.uk/quotes.json")
       .done(function (a) {
         var data = [];
         for(var i = 0; i < a.length; i++) {
